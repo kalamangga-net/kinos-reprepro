@@ -1,0 +1,22 @@
+#!/bin/bash
+MIRRORHOST=apt.dockerproject.org
+MIRRORROOT=repo
+MIRRORDIST=debian-jessie
+LOCAL=$HOME/docker/
+DEBCOPY=$HOME/deb/
+FILEPKG=docker-pkg.lists
+
+mkdir -p $LOCAL $DEBCOPY
+debmirror -nosource -m -passive -host=$MIRRORHOST \
+  -root=$MIRRORROOT -method=http -progress -dist=$MIRRORDIST \
+  -section=main -arch=amd64 -ignore-release-gpg $LOCAL
+find $LOCAL -type f -name "*amd64*" > $FILEPKG
+find $LOCAL -type f -name "*all*" >> $FILEPKG
+for pkg in `cat $FILEPKG`
+do
+ cp $pkg $DEBCOPY
+done
+reprepro includedeb satu deb/*.deb
+rm $FILEPKG
+rm -rf $DEBCOPY
+rm -rf $LOCAL

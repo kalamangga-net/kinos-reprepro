@@ -1,0 +1,13 @@
+#!/bin/bash
+NAME=kinos
+REPO=/mnt/repo
+if [ -d $REPO/$NAME ]
+ then
+  rm -rf $REPO/$NAME
+  rm -rf $REPO/lists
+  rm -rf $REPO/logs
+fi
+mkdir -p $REPO/$NAME
+rm -rf db
+reprepro -V update satu
+

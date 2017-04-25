@@ -1,0 +1,18 @@
+#!/bin/bash
+MIRROR=cran.r-project.org::CRAN/bin/linux/debian/jessie-cran3/
+LOCAL=$HOME/cran/
+DEBCOPY=$HOME/deb/
+FILEPKG=cran-pkg.lists
+
+mkdir -p $LOCAL $DEBCOPY
+rsync -rtlzv --progress --delete $MIRROR $LOCAL
+find $LOCAL -type f -name "*amd64*" > $FILEPKG
+find $LOCAL -type f -name "*all*" >> $FILEPKG
+for pkg in `cat $FILEPKG`
+do
+ cp $pkg $DEBCOPY
+done
+reprepro includedeb satu deb/*.deb
+rm $FILEPKG
+rm -rf $DEBCOPY
+rm -rf $LOCAL

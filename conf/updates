@@ -1,8 +1,26 @@
 Name: merge.satu
-Suite: sid
+Suite: jessie
 VerifyRelease: blindtrust
 Method: http://ftp.fr.debian.org/debian
 Architectures: amd64
 Components: main
 #FilterFormula: Priority (==required)
-#FilterList: installed.list
+FilterList: purge lists
+
+Name: merge.satu-updates
+Suite: jessie-updates
+VerifyRelease: blindtrust
+Method: http://ftp.fr.debian.org/debian
+Architectures: amd64
+Components: main
+#FilterFormula: Priority (==required)
+FilterList: purge lists
+
+Name: merge.satu-security
+Suite: jessie/updates
+VerifyRelease: blindtrust
+Method: http://security.debian.org/
+Architectures: amd64
+Components: main
+#FilterFormula: Priority (==required)
+FilterList: purge lists

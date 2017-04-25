@@ -1,0 +1,21 @@
+Origin: KInOS
+Label: KInOS
+Codename: satu
+Suite: satu
+Components: main
+UDebComponents: main
+Architectures: amd64
+Version: 1.0
+Description: KInOS 1.0 (satu)
+# Jangan kasih "-" di kolom Update, nanti paket2 khas2 akan dihapus
+Update: merge.satu
+SignWith: yes
+DebIndices: Packages Release . .gz .bz2 tiffany.py
+UDebIndices: Packages . .gz .bz2
+DscIndices: Sources Release . .gz .bz2 tiffany.py
+Contents: udebs nodebs . .gz
+ContentsArchitectures: amd64
+ContentsComponents: main
+ContentsUComponents: main
+Log: satu.log
+ --type=dsc changelogs

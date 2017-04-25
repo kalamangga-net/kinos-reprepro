@@ -1,0 +1,8 @@
+Name: merge.satu
+Suite: sid
+VerifyRelease: blindtrust
+Method: http://ftp.fr.debian.org/debian
+Architectures: amd64
+Components: main
+#FilterFormula: Priority (==required)
+#FilterList: installed.list

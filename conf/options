@@ -1,0 +1,5 @@
+basedir /mnt/repo
+confdir /home/reprepro/conf
+dbdir /home/reprepro/db
+outdir /mnt/repo/kinos
+gnupghome /home/reprepro/.gnupg

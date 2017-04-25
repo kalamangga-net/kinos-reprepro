@@ -1,0 +1,12 @@
+#!/bin/bash
+LATEST=$(wget --no-check-certificate -qO- https://s3.amazonaws.com/rstudio-server/current.ver)
+[ -z "$RSTUDIO_VERSION" ] && RSTUDIO_VERSION=$LATEST || true
+RSTUDIOSERVER=rstudio-server-${RSTUDIO_VERSION}-amd64.deb
+RSTUDIODESKTOP=rstudio-${RSTUDIO_VERSION}-amd64.deb
+mkdir -p deb/
+cd deb
+wget -q http://download2.rstudio.org/${RSTUDIOSERVER}
+wget -q http://download1.rstudio.org/${RSTUDIODESKTOP}
+cd ..
+reprepro includedeb satu deb/*.deb
+rm -rf deb
